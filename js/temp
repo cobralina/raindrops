@@ -1,0 +1,20 @@
+ var dropgroup = group.append('g')
+                    .attr('id', ('drop' + i))
+                    .attr('transform', 'translate('+ dropX+ ','+ dropY+')')
+
+
+
+                     <datalist id="rangevalues">
+                                   <option>0</option>
+                                   <option>131</option>
+                                   <option>300</option>
+                                   <option>700</option>
+                                   <option>1000</option>
+                                   <option>1300</option>
+                                   <option>2000</option>
+                                   <option>3400</option>
+                                   <option>4800</option>
+                                   <option>5000</option>
+                                   <option>11000</option>
+                                   <option>15455</option>
+                               </datalist>

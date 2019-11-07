@@ -1,0 +1,70 @@
+{
+  "assetList":  [
+  {
+    "assetName": "einem Kilogramm Möhren",
+    "valueLitre":131,
+    "desAsset":"Für die Herstellung von 1 kg Möhren wird 131L Wasser verwendet, das entspricht etwas über einer Badewanne.",
+    "pic":"moehren.jpg"
+  },
+   {
+    "assetName":"einem Liter Bier",
+    "valueLitre":300,
+    "desAsset":"n.n.",
+    "pic":"bier.jpg"
+  },
+   {
+    "assetName": "einem Kilogramm Äpfel",
+    "valueLitre":700,
+    "desAsset":"n.n.",
+    "pic":"aepfel.jpg"
+  },
+   {
+    "assetName":"einem Liter Milch",
+    "valueLitre":1000,
+    "desAsset":"n.n.",
+    "pic":"milch.jpg"
+  },
+  {
+    "assetName":"einem Kilogramm Weizen",
+    "valueLitre":1300,
+    "desAsset":"n.n.",
+    "pic":"weizen.jpg"
+  },
+   {
+    "assetName": "einem Kilogramm Papier",
+    "valueLitre":2000,
+    "desAsset":"n.n.",
+    "pic":"papier.jpg"
+  },
+  {
+    "assetName":"einem Kilogramm Reis",
+    "valueLitre":3400,
+    "desAsset":"n.n.",
+    "pic":"reis.jpg"
+  },
+  {
+    "assetName":"einem Kilogramm Schweinefleisch",
+    "valueLitre":4800,
+    "desAsset":"n.n.",
+    "pic":"schweinefleisch.jpg"
+  },
+  {
+    "assetName":"einem Kilogramm Käse",
+    "valueLitre":5000,
+    "desAsset":"n.n.",
+    "pic":"kaese.jpg"
+  },
+    {
+  "assetName":"einer Baumwolljeans",
+  "valueLitre":11000,
+  "desAsset":"n.n.",
+  "pic":"jeans.jpg"
+},
+   {
+    "assetName":"einem Kilogramm Rindfleisch",
+    "valueLitre":15455,
+    "desAsset":"n.n.",
+    "pic":"rindfleisch.jpg"
+  }
+  ]
+}
