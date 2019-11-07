@@ -2,99 +2,11 @@ var global =
     {
         id: null,
         source: null,
-        origin: null,
+        origin: null
     };
 
 
-    //iFrame Kommunikation
-    $.receive_message = function(event)
-    {
-        try
-        {
-            var data = JSON.parse(event.data);
-        }
-        catch(error)
-        {
-            return;
-        }
 
-        //Event
-        var origin = event.origin || event.originalEvent.origin;
-        global.source = event.source;
-        global.origin = origin;
-        global.id = data.id;
-
-        if(data.type == "size:init")
-        {
-            $wrapper = $("wrapper");
-            var body = $("body");
-            event.source.postMessage(JSON.stringify({"type": "size:set", "id": data.id, "width": $wrapper.width(), "height": body.height()}), origin);
-        }
-    }
-
-
-    //iFrame Kommunikation
-    $.send_message = function()
-    {
-        //iFrame Kommunikation zwecks Höhenänderung
-        $wrapper = $("wrapper");
-        var body = $("body");
-        if(global.source !== null)
-        {
-            //console.log("send message: w " + $wrapper.width() + " h: " + body.height());
-            global.source.postMessage(JSON.stringify({"type": "size:set", "id": global.id, "width": $wrapper.width(), "height": body.height()}), "*" );
-        }
-        else
-        {
-            setTimeout(function(){$.send_message();}, 2000);
-        }
-    }
-
-
-    setTimeout(function(){$.send_message();}, 2000);
-
-
-
-
-
-function drop_pixel()
-{
-    //SZM
-    var szm = {"st": "zdf", "cp": "Startseite", "sv": "ke"};
-    if(typeof(iom) !== 'undefined' && typeof iom.c === "function")
-    {
-        iom.c(szm, 1);
-    }
-
-    //ATInternet
-    if(typeof(ATInternet) !== 'undefined')
-    {
-        var tag = new ATInternet.Tracker.Tag();
-        tag.page.set({
-            "level1":"zdf",
-            "level2":"Startseite",
-            "chapter1":"Startseite",
-            "chapter2":"Infografik",
-            "chapter3":"virtuelles-wasser/A080134",
-            "name":"Startseite_Infografik_virtuelles-wasser",
-            "customObject":
-                {
-                    "broadcast":"ZDF",
-                    "domain":"zdf",
-                    "chapter1":"Startseite",
-                    "id":"Infografik_virtuelles-wasser_A080134"
-                }});
-        tag.customVars.set(
-            {
-                "site":
-                    {
-                        "chapter3":"virtuelles-wasser/A080134",
-                        "chapter2":"Infografik",
-                        "id":"Infografik_virtuelles-wasser_A080134"
-                    }});
-        tag.dispatch();
-    }
-}
 
 //--- JSON laden ------------------------------------------------------------------------------------------- //
 
@@ -145,37 +57,6 @@ function thousendPoints(zahl) {
     return ergebnis;
 }
 
-//--- Slider ------------------------------------------------------------------------------------------------   //
-
-function svgSlider (_values, _images, _names){
-
-    var values = _values;
-    var images = _images;
-    var names = _names;
-
-
-    var slider = document.getElementById('myRange');
-   
-    slider.oninput = function() {
-
-        var numDrops = values [slider.value - 1] / 10;
-        var assetName = names [slider.value -1] ;
-        var assetValue = values [slider.value -1];
-        var assetImage = images[slider.value -1];
-
-
-        if(slider.value == 0){
-            generateStartLayer();
-            renderSVG(1568);
-        }
-        else {
-            generateAssetLayer(assetName, assetValue, assetImage);
-            renderSVG (numDrops);
-        }
-    }
-
-
-}
 
 //--- Arrow-Buttons ------------------------------------------------------------------------------------------ //
 
@@ -201,7 +82,6 @@ function svgButtons (_values, _images, _names) {
 
     btnForward.addEventListener(event, function() {
         i = i+1;
-        drop_pixel();
 
         if (i > 10 ) {
             generateStartLayer();
@@ -228,7 +108,6 @@ function svgButtons (_values, _images, _names) {
 
     btnBack.addEventListener(event, function() {
         i = i-1;
-        drop_pixel();
 
         if (i < 0 ) {
             generateStartLayer();
@@ -345,13 +224,7 @@ function generateAssets() {
 
         }
 
-       //svgSlider(arrValues, arrImages, arrNames);
        svgButtons(arrValues, arrImages, arrNames);
-
-        
-       /* $('.assetpics').on('click', '.thumb', function() {
-            var numDrops = parseInt(this.id) / 10;
-            renderSVG(numDrops) ;    */
 
         });
 
@@ -415,16 +288,9 @@ function generateStartLayer() {
 
 $(document).ready( function()  {
 
-   drop_pixel();
-
-    window.addEventListener ? window.addEventListener("message", $.receive_message) : window.attachEvent("onmessage", $.receive_message);
-
     renderSVG(1568);
     generateAssets();
     generateStartLayer();
-    //svgSlider();
-
-
 
 
 } );
